@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
@@ -16,7 +17,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	defer resp.Body.Close()
 
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	jsonBytes := ([]byte)(byteArray)
 }
